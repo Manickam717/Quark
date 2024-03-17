@@ -1,0 +1,277 @@
+.desktop11-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.desktop11-desktop1 {
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: rgba(221, 192, 192, 1);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.desktop11-text {
+  top: 43px;
+  left: 118px;
+  color: rgba(255, 255, 255, 1);
+  width: 217px;
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: italic;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-text02 {
+  top: 43px;
+  left: 118px;
+  color: rgba(255, 255, 255, 1);
+  width: 217px;
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: italic;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-text04 {
+  top: 26px;
+  left: 41px;
+  color: rgba(255, 255, 255, 1);
+  width: 44px;
+  height: auto;
+  position: absolute;
+  font-size: 64px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-text05 {
+  top: 39px;
+  left: 64px;
+  color: rgba(255, 255, 255, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-rectangle1 {
+  top: 30px;
+  left: 28px;
+  width: 79px;
+  height: 65px;
+  position: absolute;
+  border-radius: 40px;
+}
+
+.desktop11-text06 {
+  top: 180px;
+  left: 460px;
+  color: rgba(255, 255, 255, 1);
+  width: 250px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Semi Bold;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-text08 {
+  top: 243px;
+  left: 460.5294494628906px;
+  color: rgba(255, 255, 255, 1);
+  width: 189px;
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Semi Bold;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-rectangle3 {
+  top: 147px;
+  left: 439px;
+  width: 588px;
+  height: 750px;
+  position: absolute;
+  border-radius: 40px;
+}
+
+.desktop11-rectangle4 {
+  top: 446px;
+  left: 483px;
+  width: 501px;
+  height: 66px;
+  position: absolute;
+  border-radius: 40px;
+}
+
+.desktop11-rectangle5 {
+  top: 480px;
+  left: 483px;
+  width: 501px;
+  height: 66px;
+  position: absolute;
+  border-radius: 40px;
+}
+
+.desktop11-rectangle6 {
+  top: 363px;
+  left: 483px;
+  width: 501px;
+  height: 66px;
+  position: absolute;
+  border-radius: 40px;
+}
+
+.desktop11-text10 {
+  top: 378px;
+  left: 503px;
+  color: rgba(125, 132, 131, 1);
+  width: 150px;
+  height: auto;
+  position: absolute;
+  font-size: 28px;
+  font-style: Light;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-text12 {
+  top: 495px;
+  left: 500px;
+  color: rgba(125, 131, 131, 1);
+  width: 184px;
+  height: auto;
+  position: absolute;
+  font-size: 28px;
+  font-style: Extra Light;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop1-rectangle9 {
+  top: 623px;
+  left: 544px;
+  width: 400px;
+  /* Increase width */
+  height: 80px;
+  /* Increase height */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/path/to/your/oval-image.png');
+  /* Background image for oval shape */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 40px;
+  /* Half of the height to create an oval shape */
+}
+
+.oval-button {
+  width: 100%;
+  /* Button takes full width of container */
+  height: 100%;
+  /* Transparent background for button */
+  font-size: 20px;
+  /* Adjust font size as needed */
+  font-weight: bold;
+  /* Optionally adjust font weight */
+  color: #000000;
+  /* Text color */
+  cursor: pointer;
+  /* Show cursor as pointer on hover */
+  border-radius: 20px;
+}
+
+.oval-button:hover {
+  background-color: red;
+}
+
+
+.desktop11-text14 {
+  top: 717px;
+  left: 527px;
+  color: rgba(0, 0, 0, 1);
+  width: 429px;
+  height: auto;
+  position: absolute;
+  font-size: 23px;
+  font-style: Bold;
+  text-align: left;
+  font-family: Encode Sans Expanded;
+  font-weight: 700;
+  line-height: 0px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop11-text16 {
+  top: 637px;
+  left: 684px;
+  color: rgba(255, 255, 255, 1);
+  width: 75px;
+  height: auto;
+  position: absolute;
+  font-size: 28px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}

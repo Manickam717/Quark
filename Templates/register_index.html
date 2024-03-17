@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(https://img.freepik.com/free-photo/banner-with-abstract-background-with-blue-tones-paper-cutout-waves_24972-1917.jpg?size=626&ext=jpg&ga=GA1.1.1269040533.1709510400&semt=ais);
+            background-size:cover;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #ffffffa7;
+            padding: 20px;
+            border-radius: 20px;
+            width: 450px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #1d0ca2;
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form action = " " method = 'post'>
+            {% csrf_token %}
+            <input type="text" name = "first_name" placeholder="First Name" required>
+            <input type="text" name = "last_name"  placeholder="Last Name" required>
+            <input type="text" name = "username"   placeholder="Username" required>
+            <input type="text" name = "institute_name" placeholder="Institution" required>
+            <input type="text" name = "dept" placeholder="Department" required>
+            <input type="text" name = "year" placeholder="Year of Studying" required>
+            <input type="text" name = "number" placeholder = "phone number" required> 
+            <input type="email" name = "email" placeholder="Email" required>
+            <input type="password" name = "password" placeholder="Password" required>
+            <input type="password" name = "conf_password" placeholder="Confirm Password" required>
+            <input type="submit" value = "Register" >
+        </form>
+    </div>
+</body>
+</html>

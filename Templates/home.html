@@ -1,0 +1,463 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .project-link {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .project-item:hover {
+            background-color: lightblue;
+            /* Change the color to your desired color */
+        }
+
+        .container {
+            background: linear-gradient(315deg, rgb(236, 194, 234) 3%, rgba(60, 132, 206, 1) 38%, rgba(48, 238, 226, 1) 68%, rgb(239, 166, 166) 98%);
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        .left-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile a {
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 10px;
+        }
+
+        .profile-name {
+            font-size: 18px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .roles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: flex-start;
+        }
+
+        .role-button {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 20px;
+            /* Change border-radius to make it oval */
+            cursor: pointer;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+
+        .role-button:hover {
+            background-color: #EEE8AA;
+            /* Pale Goldenrod */
+        }
+
+        .clear-filter-btn {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: larger;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #FFA07A;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 0;
+            position: sticky;
+            top: 55px;
+            /* Adjust the top position as needed */
+        }
+
+        .clear-filter-btn:hover {
+            background-color: #FF7F50;
+
+        }
+
+        .right-content {
+            flex: 3;
+            padding: 20px 40px;
+            /* Adjust padding to make the box bigger */
+            overflow-y: auto;
+        }
+
+
+        .project-list {
+            width: 770px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.822);
+            border-radius: 5px;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .new-project-btn {
+            width: auto;
+            /* Adjust the width as needed */
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #FFA07A;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            /* Adjust the distance from the bottom as needed */
+            left: 20px;
+            /* Adjust the distance from the left as needed */
+            z-index: 1000;
+            /* Ensure it's above other content */
+            border-radius: 50px;
+            /* Make it oval-shaped */
+        }
+
+
+        .new-project-btn:hover {
+            background-color: #FF7F50;
+            /* Adjust the opacity as needed */
+        }
+
+
+        .selected-roles-box {
+            border: 1px solid #ccc;
+            /* Light gray border */
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 5px;
+            position: fixed;
+            top: 47px;
+            height: 500px;
+            right: 20px;
+            background-color: #f5f5f5;
+            /* Light gray background */
+            z-index: 1000;
+            backdrop-filter: blur(50px);
+        }
+
+
+
+
+        .selected-roles-container {
+            position: fixed;
+            top: 47px;
+            right: 32px;
+            max-height: calc(100vh - 125px);
+            /* Adjust max-height as needed */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+            z-index: 1000;
+            padding: 10px;
+        }
+
+
+        .selected-roles-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .selected-roles-list li {
+            margin-bottom: 5px;
+        }
+
+        .selected-role-item {
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            background-color: #aed5e6;
+            /* Light blue */
+            color: #000;
+            /* Black text */
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="left-content">
+            <div class="profile">
+                <a href="profile">
+                    <div class="profile-img"></div>
+                </a>
+            </div>
+
+
+            <input type="text" class="search-bar" style="position: sticky; top:20px; z-index:1;"
+                placeholder="Search roles...">
+
+            <form action = " " method = 'post'> 
+                {% csrf_token %}
+                <button class="clear-filter-btn" onclick="clearFilter()">Clear Filter</button>
+                <input type = 'hidden' name = 'clear_screen' value = 't' >
+            </form> 
+
+            <div class="roles-container" style="padding:5px">
+                <!-- Role buttons here -->
+                {% for obj in rolls_objects %}
+                    <form action = " " method = 'post' >
+                        {% csrf_token %}
+                        <button class="role-button" onclick="selectInterest(this)">{{obj.roll_name}}</button>
+                        <input type = 'hidden' name = 'role' value = "{{obj.roll_name}}" >
+                    </form>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+        <div class="right-content">
+            <h2 style="text-align:center; width:750px; font-size:xx-large;">Quark</h2>
+            <div class="selected-roles-container">
+                <div class="selected-roles-box">
+                    <ul class="selected-roles-list">
+                        <h3>Roles Selected:</h3><br>
+                        
+                        {% for role in roles_selected %}
+                        <li class="selected-role-item">{{role}}</li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+
+
+
+                <ul class="selected-roles-list">
+                    <!-- Selected roles will be displayed here -->
+                </ul>
+            </div>
+            <div class="another-box">
+
+                <div class="another-box-content">
+                    <!-- Content of the another box goes here -->
+                </div>
+            </div>
+            <ul class="project-list">
+                <!-- Project list items here -->
+
+               {% for obj in project_objects %}
+                <li class="project-item">
+                    <form action = "projects/enroll_project" method = "get" >
+                        <a href="#" onclick="enrollProject(event)" style="text-decoration:none">
+                            <div class="project-info">
+                                <h3>{{obj.project_name}}</h3>
+                                <p>Creator: {{obj.creater_name}}</p> <!-- Add creator information here -->
+                                <p>Description:{{obj.project_descript}} </p> <!-- Add project description here -->
+                            </div>
+                            <input type="hidden" name= 'project_id' value="{{obj.project_id}}">
+                        </a>
+                    </form>
+                </li>
+                {%endfor%}
+            
+            </ul>
+
+
+            <!-- Move the New Project button here -->
+            <a href="projects/add_project" 
+               class="new-project-btn" 
+               style="position: fixed; bottom: 20px; left: 20px; width: 100px;left: 1200px;;">New Project</a>
+
+        </div>
+        
+    </div>
+    <script>
+
+
+
+        let roleScrollEnabled = false;
+        let projectScrollEnabled = false;
+
+        function selectInterest(button) {
+            button.classList.toggle('selected');
+            updateSelectedRolesBox();
+        }
+
+        function enableRoleScroll() {
+            roleScrollEnabled = true;
+            projectScrollEnabled = false;
+            document.querySelector('.role-container').style.overflowY = 'auto';
+            document.querySelector('.project-container').style.overflowY = 'hidden';
+        }
+
+        function disableRoleScroll() {
+            roleScrollEnabled = false;
+            document.querySelector('.role-container').style.overflowY = 'hidden';
+        }
+
+        function enableProjectScroll() {
+            projectScrollEnabled = true;
+            roleScrollEnabled = false;
+            document.querySelector('.project-container').style.overflowY = 'auto';
+            document.querySelector('.role-container').style.overflowY = 'hidden';
+        }
+
+        function disableProjectScroll() {
+            projectScrollEnabled = false;
+            document.querySelector('.project-container').style.overflowY = 'hidden';
+        }
+
+        document.addEventListener('wheel', function (e) {
+            if (roleScrollEnabled) {
+                e.preventDefault();
+                const deltaY = e.deltaY;
+                const roleContainer = document.querySelector('.role-container');
+                roleContainer.scrollTop += deltaY;
+            } else if (projectScrollEnabled) {
+                e.preventDefault();
+                const deltaY = e.deltaY;
+                const projectContainer = document.querySelector('.project-container');
+                projectContainer.scrollTop += deltaY;
+            }
+        });
+        function clearFilter() {
+            var roleButtons = document.querySelectorAll('.role-button.selected');
+            roleButtons.forEach(function (button) {
+                button.classList.remove('selected');
+            });
+            updateSelectedRolesBox();
+        }
+        
+
+
+        function selectInterest(button) {
+            button.classList.toggle('selected');
+        }
+
+        // Function to send selected roles to a URL
+        function sendSelectedRoles() {
+            // Get all elements with the 'role-button' class
+            var roleButtons = document.querySelectorAll('.role-button');
+            var selectedRoles = [];
+
+            // Loop through each role button to check if it's selected
+            roleButtons.forEach(function (button) {
+                if (button.classList.contains('selected')) {
+                    // If selected, add the role text to the selectedRoles array
+                    selectedRoles.push(button.textContent);
+                }
+            });
+
+            // Construct the URL with the selected roles (change 'your-url' to the actual URL)
+            var url = 'your-url?roles=' + encodeURIComponent(selectedRoles.join(','));
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+
+        }
+
+        // Function to filter and display roles based on search input
+        function filterRoles() {
+            var searchInput = document.querySelector('.search-bar');
+            var filter = searchInput.value.toUpperCase();
+            var roles = document.querySelectorAll('.role-button');
+
+            roles.forEach(function (role) {
+                var textValue = role.textContent || role.innerText;
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    role.style.display = "";
+                } else {
+                    role.style.display = "none";
+                }
+            });
+        }
+
+        // Attach the filterRoles function to the input event of the search bar
+        document.querySelector('.search-bar').addEventListener('input', filterRoles);
+
+        function updateSelectedRolesBox() {
+            var selectedRoles = document.querySelectorAll('.role-button.selected');
+            var selectedRolesList = document.querySelector('.selected-roles-list');
+            selectedRolesList.innerHTML = '';
+            selectedRoles.forEach(function (role) {
+                var roleItem = document.createElement('li');
+                roleItem.textContent = role.textContent;
+                selectedRolesList.appendChild(roleItem);
+            });
+        }
+
+        function enrollProject(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            // Get form data
+            var form = event.target.closest('form');
+            var formData = new FormData(form);
+    
+            // Construct query string from form data
+            var queryString = new URLSearchParams(formData).toString();
+    
+            // Get form action URL
+            var formAction = form.getAttribute('action');
+    
+            // Construct final URL with form action and query string
+            var finalUrl = formAction + '?' + queryString;
+    
+            // Redirect to the final URL
+            window.location.href = finalUrl;
+        }
+
+
+    </script>
+
+</body>
+
+</html>

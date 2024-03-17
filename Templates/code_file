@@ -1,0 +1,28 @@
+data = json.load( request.body )
+            
+            print( data )
+            #calculate the total_position available 
+            tot_pos = 0
+            for role_obj in data['selectedRoles'] :
+                tot_pos = tot_pos + int( role_obj['memberCount'] )
+                
+                
+            #instantiating project data object
+            prjt_data_object = projmodel.project_data( creater_id = request.user.id ,
+                                                       project_name = data['projectTitle'],
+                                                       project_descript = data['projectDescription'],
+                                                       end_date = data['endDate'] ,
+                                                       link = data['link'] ,
+                                                       tot_pos = tot_pos ,
+                                                       avl_pos = tot_pos )
+            
+            prjt_data_object.save( )
+            
+            #instatiating rolls data for the project 
+            for role_obj in data['selectedRoles']:
+                projmodel.project_roll_data( project_id = prjt_data_object.id ,
+                                            roll_name = role_obj['role'] ,
+                                            tot_pos = int( role_obj['memberCount'] ),
+                                            avl_pos = int( role_obj['memberCount'] ) ).save()
+            
+            return HttpResponse( "sucessfull" )    

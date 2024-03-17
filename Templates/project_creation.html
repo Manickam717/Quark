@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Problem Statement or Project Idea</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .project-link {
+            color: black;
+            text-decoration: none;
+        }
+
+        .project-item:hover {
+            background-color: lightblue;
+            /* Change the color to your desired color */
+        }
+
+        .container {
+            background: linear-gradient(315deg, rgb(236, 194, 234) 3%, rgba(60, 132, 206, 1) 38%, rgba(48, 238, 226, 1) 68%, rgb(239, 166, 166) 98%);
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            background-size: cover;
+        }
+
+        .left-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile a {
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 10px;
+        }
+
+        .profile-name {
+            font-size: 18px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .roles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: flex-start;
+        }
+
+        .role-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+
+        .recommend-btn {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 0;
+            position: sticky;
+            top: 55px;
+            /* Adjust the top position as needed */
+        }
+
+
+        .right-content {
+            flex: 3;
+            padding: 20px 40px;
+            /* Adjust padding to make the box bigger */
+            overflow-y: auto;
+        }
+
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .new-project-btn {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container {
+            width: 65%;
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        .search-container {
+            width: 30%;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .role-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .availability-indicator {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .availability-circle {
+            width: 25px;
+            height: 25px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 1px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-bottom: 20;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .selected-role-container {
+            margin-top: 10px;
+        }
+
+        .selected-roles-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .selected-roles-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .selected-role {
+            background-color: #007bff;
+            color: white;
+            border-radius: 3px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .selected-role input[type="text"] {
+            margin-left: auto;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            width: 50px;
+        }
+
+        .add-button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .communication-links-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .communication-links-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .communication-links-box input[type="text"],
+        .communication-links-box button {
+            margin-right: 5px;
+        }
+
+        .deadline-container {
+            margin-top: 20px;
+        }
+
+        .deadline-container label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .deadline-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            border-color: red;
+        }
+
+        .communication-links-container {
+            margin-top: 20px;
+        }
+
+        .communication-links-container h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .communication-links-container .communication-link {
+            margin-bottom: 10px;
+        }
+
+        .communication-links-container .communication-link input[type="text"],
+        .communication-links-container .communication-link input[type="url"] {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .communication-links-container .communication-link button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .communication-links-container .communication-link button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-content">
+            <div class="profile">
+                <a href="profile_page_url_here">
+                    <div class="profile-img"></div>
+                </a>
+            </div>
+
+
+            <input type="text" class="search-bar" style="position: sticky; top:20px; z-index:1;"
+                placeholder="Search roles...">
+
+            <div class="roles-container" style="padding:5px">
+                {%  for role in roles_objs  %}
+                <button class="role-button" onclick= "selectRole( '{{role.roll_name}}' ) ">{{role.roll_name}}</button>
+                {%  endfor  %}
+                
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="right-content">
+                <h2>Submit Problem Statement or Project Idea</h2>
+
+                <form>
+                    <div>
+                        <label for="title">Title:</label><br>
+                        <input type="text" id="title" name="title" placeholder="Enter title" required><br><br>
+                    </div>
+                    <div>
+                        <label for="description">Description:</label><br>
+                        <textarea id="description" name="description" rows="4" cols="50" placeholder="Enter description"
+                            required></textarea><br><br>
+                    </div>
+                    <div>
+                        <label for="roles">Roles:</label><br>
+                    </div>
+
+                    <div class="selected-roles-box" id="selectedRolesBox">
+                        <div class="selected-roles-title">Selected Roles:</div>
+                        <div id="selectedRoles"></div>
+                    </div>
+
+                    <div class="deadline-container">
+                        <label for="deadline">Enddate (in days):</label><br>
+                        <input type="date" id="deadline" name="enddate" min="0" placeholder="Enter enddate"
+                            required><br><br>
+                    </div>
+
+
+                    <div class="communication-links-box" id="communicationLinksBox">
+                        <div class="communication-links-title">Communication Links:</div>
+                        <div id="communicationLinks"></div>
+                        <div>
+                            <input type="text" id="link" name = "link" placeholder="Link"
+                        </div>
+                    </div>
+
+
+                    <br><br>
+                    <input type="submit" onclick = 'submitForm( event )' value="Submit">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+
+        let roleScrollEnabled = false;
+        let projectScrollEnabled = false;
+        let selectedRoles = [  ]
+
+        function selectInterest(button) {
+            button.classList.toggle('selected');
+        }
+
+        function enableRoleScroll() {
+            roleScrollEnabled = true;
+            projectScrollEnabled = false;
+            document.querySelector('.role-container').style.overflowY = 'auto';
+            document.querySelector('.project-container').style.overflowY = 'hidden';
+        }
+
+        function disableRoleScroll() {
+            roleScrollEnabled = false;
+            document.querySelector('.role-container').style.overflowY = 'hidden';
+        }
+
+        function enableProjectScroll() {
+            projectScrollEnabled = true;
+            roleScrollEnabled = false;
+            document.querySelector('.project-container').style.overflowY = 'auto';
+            document.querySelector('.role-container').style.overflowY = 'hidden';
+        }
+
+        function disableProjectScroll() {
+            projectScrollEnabled = false;
+            document.querySelector('.project-container').style.overflowY = 'hidden';
+        }
+
+        document.addEventListener('wheel', function (e) {
+            if (roleScrollEnabled) {
+                e.preventDefault();
+                const deltaY = e.deltaY;
+                const roleContainer = document.querySelector('.role-container');
+                roleContainer.scrollTop += deltaY;
+            } else if (projectScrollEnabled) {
+                e.preventDefault();
+                const deltaY = e.deltaY;
+                const projectContainer = document.querySelector('.project-container');
+                projectContainer.scrollTop += deltaY;
+            }
+        });
+
+        function selectInterest(button) {
+            button.classList.toggle('selected');
+        }
+
+        
+        function selectRole(role) {
+            const memberCount = prompt('Enter the number of members needed for ' + role);
+            if (memberCount !== null && memberCount !== '') {
+                const selectedRoleObj = {
+                    role: role,
+                    memberCount: memberCount
+                };
+                selectedRoles.push(selectedRoleObj);
+                displaySelectedRole(selectedRoleObj);
+            }
+        }
+
+        function displaySelectedRole(roleObj) {
+            const selectedRolesContainer = document.getElementById('selectedRoles');
+            const roleElement = document.createElement('div');
+            roleElement.textContent = roleObj.role + ' (' + roleObj.memberCount + ')';
+        
+            const clearButton = document.createElement('button');
+            clearButton.textContent = 'Clear';
+            clearButton.onclick = function () {
+                selectedRoles = selectedRoles.filter(obj => obj !== roleObj);
+                selectedRolesContainer.removeChild(roleElement);
+            };
+        
+            roleElement.appendChild(clearButton);
+            selectedRolesContainer.appendChild(roleElement);
+        }
+        
+        function submitForm( event ) {     
+            // to Prevent default action made by form 
+            event.preventDefault();
+
+            // Get values from additional form fields
+            const projectTitle = document.getElementById('title').value;
+            const projectDescription = document.getElementById('description').value;
+            const endDate = document.getElementById('deadline').value;
+            const link = document.getElementById('link').value;
+           
+            //
+            console.log( projectTitle ,projectDescription ,endDate ,link )
+            console.log( selectedRoles )
+            //
+
+            // Send data to the server
+            sendDataToServer(selectedRoles, projectTitle, projectDescription, endDate, link);
+        }
+        
+        function getCookie(name) {
+            const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+            return cookieValue ? cookieValue.pop() : '';
+        }
+          
+        function sendDataToServer(selectedRoles, projectTitle, projectDescription, endDate, link) {
+            // Combine selected roles and additional form fields into a single object
+            const formData = {
+                selectedRoles: selectedRoles,
+                projectTitle: projectTitle,
+                projectDescription: projectDescription,
+                endDate: endDate,
+                link: link
+            };
+            
+            console.log( formData  )
+
+            const jsonData = JSON.stringify(formData);
+            const csrftoken = getCookie( 'csrftoken' );
+        
+            fetch( 'http://127.0.0.1:8000/projects/add_project', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json' ,
+                    'X-CSRFToken' : csrftoken
+                },
+                body: jsonData
+                
+                }).then(response => {
+                    if (response.ok) {
+                        // Redirect the user to the previous page after successful submission
+                        window.location.href = 'http://127.0.0.1:8000/projects/add_project';
+                    } else {
+                        console.error('Error sending data to server:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error sending data to server:', error);
+                });
+
+            };
+
+
+
+        // Function to filter and display roles based on search input
+        function filterRoles() {
+            var searchInput = document.querySelector('.search-bar');
+            var filter = searchInput.value.toUpperCase();
+            var roles = document.querySelectorAll('.role-button');
+
+            roles.forEach(function (role) {
+                var textValue = role.textContent || role.innerText;
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    role.style.display = "";
+                } else {
+                    role.style.display = "none";
+                }
+            });
+        }
+
+        // Attach the filterRoles function to the input event of the search bar
+        document.querySelector('.search-bar').addEventListener('input', filterRoles);
+
+    </script>
+</body>
+
+</html>

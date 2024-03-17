@@ -1,0 +1,231 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Problem Statement or Project Idea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: linear-gradient(315deg, rgb(236, 194, 234) 3%, rgba(60, 132, 206, 1) 38%, rgba(48, 238, 226, 1) 68%, rgb(239, 166, 166) 98%);
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container {
+            width: 100%;
+            /* Adjusted width */
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid white;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .add-button,
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover,
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile a {
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 10px;
+        }
+
+        .collaboration-box {
+            border: 1px solid #ccc;
+            /* Border style */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px;
+            /* Padding inside the box */
+            margin-bottom: 20px;
+            /* Ensures the box fits the content width */
+        }
+
+        .description-details {
+            border: 1px solid #ccc;
+            /* Border style */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px;
+            /* Padding inside the box */
+            margin-top: 10px;
+            /* Margin top for spacing */
+            height: 200px;
+        }
+
+        .deadline-container {
+            border: 1px solid #ccc;
+            /* Border style */
+            padding: 10px;
+            /* Padding inside the box */
+            margin-bottom: 20px;
+            /* Margin bottom for spacing */
+            width: 90px;
+            text-align: center;
+        }
+
+        .selected-roles-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .selected-roles-title {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            /* Allow the title to grow to take available space */
+        }
+
+        .small-square-box {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(0, 0, 0);
+            float: right;
+            text-align: center;
+            /* Add some space between the square box and the title */
+        }
+
+        .enroll-button {
+            margin-left: 10px;
+            margin-right: 800px;
+            margin-bottom: 19px;
+            /* Add some space between the title and the enroll button */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-content">
+            <div class="profile">
+                <a href="profile_page_url_here">
+                    <div class="profile-img"></div>
+                </a>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="right-content">
+
+                <h2 style="text-align: center;">Enrollment</h2>
+                <form action="#" method="POST" onsubmit="return submitForm()">
+                    <h4>Title:</h4>
+                    <div class="collaboration-box">
+                        <label for="title">{{ project_obj.project_name }}</label>
+                    </div>
+                    <div class="description-box">
+                        <label for="description">Description:</label><br>
+                        <!-- Box below the description -->
+                        <div class="description-details">
+                            <h5>{{ project_obj.project_descript }}</h5>
+                            <!-- Content within the box -->
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <label for="roles">Roles:</label><br>
+                    </div>
+                   
+                    {%for role in role_objs%}
+                    <form action = " " method = 'post' >
+                        {% csrf_token %}
+                        <div class="selected-roles-box" id="selectedRolesBox">
+                            <div class="selected-roles-title">{{role.roll_name}}
+                                <div class="small-square-box">
+                                    <label style="color: white;">{{role.avl_pos}}</label>
+                                </div>
+                            </div>
+                            <!-- Small square box -->
+                            <div class="enroll-button">
+                                <input type = 'hidden' name = 'role' value = "{{role.roll_name}}" >
+                                <input type="submit" value="Enroll">
+                            </div>
+                        </div>
+
+                    </form>
+                    {%endfor%}
+
+
+                    <div>
+                        <label>end_date (in days):</label><br>
+                        <div class="deadline-container">
+                            <h6>{{project_obj.end_date}}</h6>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

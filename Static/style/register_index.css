@@ -1,0 +1,358 @@
+.desktop2-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.desktop2-desktop2 {
+  width: 100%;
+  height: 1078px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(129, 168, 228, 1);
+}
+
+.desktop2-image2 {
+  top: 0px;
+  left: 0px;
+  width: 680px;
+  height: 1078px;
+  position: absolute;
+  border-radius: 0 29px 29px 0;
+}
+
+.desktop2-rectangle18 {
+  top: 49px;
+  left: 710px;
+  width: 691px;
+  height: 999px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text {
+  top: 73px;
+  left: 751px;
+  color: rgba(0, 0, 0, 1);
+  width: 141px;
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle19 {
+  top: 131px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text02 {
+  top: 153px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 254px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle20 {
+  top: 213px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text04 {
+  top: 236px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 160px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle21 {
+  top: 378px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-rectangle22 {
+  top: 460px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-rectangle23 {
+  top: 620px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop3-rectangle24 {
+  position: absolute;
+  top: 955px;
+  left: 901px;
+}
+
+.desktop3-text12 {
+  background-color: red;
+  /* Default background color */
+  color: white;
+  /* Default text color */
+  padding: 10px 20px;
+  /* Adjust padding as needed */
+  border: none;
+  /* Remove default button border */
+  border-radius: 30px;
+  /* Make button oval shape */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.desktop3-text12:hover {
+  background-color: darkred;
+  /* Change background color on hover */
+}
+
+
+.desktop2-text06 {
+  top: 970px;
+  left: 1001px;
+  color: rgba(255, 255, 255, 1);
+  width: 124px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle25 {
+  top: 295px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text08 {
+  top: 320px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 155px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle26 {
+  top: 540px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text10 {
+  top: 560px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 244px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle27 {
+  top: 702px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text12 {
+  top: 727px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 172px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-text14 {
+  top: 404px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 382px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle28 {
+  top: 785px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text16 {
+  top: 805px;
+  left: 752px;
+  color: rgba(255, 255, 255, 1);
+  width: 254px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-text18 {
+  top: 481px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 231px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-rectangle29 {
+  top: 868px;
+  left: 736px;
+  width: 624px;
+  height: 74px;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.desktop2-text20 {
+  top: 887px;
+  left: 770px;
+  color: rgba(255, 255, 255, 1);
+  width: 257px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.desktop2-text22 {
+  top: 648px;
+  left: 757px;
+  color: rgba(255, 255, 255, 1);
+  width: 213px;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}

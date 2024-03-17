@@ -1,0 +1,221 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            background: linear-gradient(315deg, rgb(236, 194, 234) 3%, rgba(60, 132, 206, 1) 38%, rgba(48, 238, 226, 1) 68%, rgb(239, 166, 166) 98%);
+           
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background-color: aqua;
+        }
+
+        .outer-container {
+            
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .profile-info {
+            width: calc(50% - 20px);
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .profile-info h2 {
+            margin-top: 0;
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .profile {
+            width: 150px;
+            margin-right: 160px;
+            margin-top: 55px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(45deg, #4CAF50, #66BB6A);
+            border: 4px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            align-self: flex-start;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile:hover {
+            transform: scale(1.1);
+        }
+
+        .profile img {
+            width: 100%;
+            padding: 47px;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile input[type="file"] {
+            display: none;
+        }
+
+        .profile label {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .projects-container,
+        .enrolled-projects {
+            width: calc(50% - 20px);
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .projects-container h2,
+        .enrolled-projects h2 {
+            margin-top: 0;
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .projects ul,
+        .enrolled-projects ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20;
+        }
+
+        @media(min-width: 768px) {
+            .profile-info {
+                width: calc(50% - 20px);
+                margin-right: 20px;
+            }
+
+            .container {
+                flex-wrap: nowrap;
+            }
+
+            .projects-container,
+            .enrolled-projects {
+                width: calc(50% - 10px);
+                margin-bottom: 0;
+            }
+
+            .projects-container {
+                margin-right: 10px;
+            }
+
+            .enrolled-projects {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-container">
+        <h1>User Profile</h1>
+        <div class="container">
+            <div class="profile-info">
+                <h2>Profile Information</h2>
+                <p><strong>Name:</strong>{{auth_user.username}}</p>
+                <p><strong>Email:</strong>{{auth_user.email}}</p>
+                <p><strong>Phone:</strong>{{user_data_obj.number}} </p>
+                <p><strong>Institution:</strong>{{user_data_obj.institution}}</p>
+                <p><strong>Year:</strong>{{user_data_obj.year}}</p>
+                <p><strong>Department:</strong>{{user_data_obj.dept}}</p>
+
+            </div>
+            <div class="profile">
+                <input type="file" id="profile-pic" accept="image/*" onchange="previewImage(event)">
+                <label for="profile-pic">
+                    <img id="preview" src="default-profile-pic.png" alt="Profile Picture">
+                </label>
+            </div>
+        </div>
+        <div class="container">
+            <div class="projects-container">
+                <h2>Projects Created</h2>
+                
+                {% for obj in created_projects %}
+                <div class="project-item" style="background-image: url('project1-background.jpg');">
+                    <!-- Content for Project 1 -->
+                    <h3>{{obj.project_name}}</h3>
+                    <p>{{obj.project_descript}}</p><br>
+                </div>
+                {% endfor %}
+            
+            </div>
+            <div class="enrolled-projects">
+                <h2>Projects Enrolled</h2>
+                
+                {% for obj in enrolled_projects %}
+                
+                <div class="project-item" style="background-image: url('enrolled-project1-background.jpg');">
+                    <!-- Content for Enrolled Project 1 -->
+                    <h3>{{obj.project_name}}</h3>
+                    <p>{{obj.project_descript}}</p>
+                    <p>{{obj.roll_name}}</p>
+                    <p>{{obj.link}}</p><br> 
+                </div>
+                
+                {% endfor %}          
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
